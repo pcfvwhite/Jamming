@@ -38,8 +38,8 @@ class App extends React.Component {
 
   removeTrack(track) {
     let tracks = this.state.playlistTracks;
-    tracks = tracks.filter(currentTrack => currentTrack.id !== tracks);
-    this.setState({playlistTracks: tracks})
+    tracks = tracks.filter(currentTrack => currentTrack.id !== track.id );
+    this.setState({playlistTracks: tracks});
   }
 
   updatePlaylistName(name) {
@@ -50,8 +50,10 @@ class App extends React.Component {
     const trackUris = this.state.playlistTracks.map(track => track.uri);
     Spotify.savePlaylist(this.state.playlistName, trackUris).then(() => {
       this.setState({
+
         playlistName: 'New Playlist',
         playlistTracks: []
+
       });
     });
   }
