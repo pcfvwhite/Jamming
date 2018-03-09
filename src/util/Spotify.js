@@ -1,5 +1,5 @@
 const clientId = 'ff3cb0d17b3c4e43b20fbe92c309b279';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'https://pw_jammming.surge.sh';
 let accessToken;
 
 const Spotify = {
@@ -49,6 +49,7 @@ const Spotify = {
     if (!name || !trackUris.length) {
       return;
     }
+
     const accessToken = Spotify.getAccessToken();
     const headers = { Authorization: `Bearer ${accessToken}` };
     let userId;

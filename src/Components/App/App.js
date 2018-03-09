@@ -36,6 +36,8 @@ class App extends React.Component {
     this.setState({playlistTracks: tracks})
   }
 
+/*Issue with duplicates though, removeTrack will delete both
+consider in next step removing by unique id for array and not by track.id*/
   removeTrack(track) {
     let tracks = this.state.playlistTracks;
     tracks = tracks.filter(currentTrack => currentTrack.id !== track.id );
@@ -55,6 +57,7 @@ class App extends React.Component {
         playlistTracks: []
 
       });
+      console.log(this.state.playlistName)
     });
   }
 
@@ -68,6 +71,7 @@ class App extends React.Component {
             <SearchResults searchResults={this.state.searchResults}
                            onAdd={this.addTrack} />
             <Playlist playlistTracks={this.state.playlistTracks}
+                      defaultPlaylistName={this.state.playlistName}
                       onNameChange={this.updatePlaylistName}
                       onRemove={this.removeTrack}
                       onSave={this.savePlaylist} />
